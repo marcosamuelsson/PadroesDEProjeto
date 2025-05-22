@@ -1,0 +1,23 @@
+cafeteria/
+├── cliente_app/
+│   ├── models/
+│   │   └── models.py
+│   ├── templates/
+│   │   ├── confirmacao.html
+│   │   ├── index.html
+│   │   └── pagamento.html
+│   ├── __init__.py
+│   └── routes.py
+├── instance/
+│   └── cafeteria.db
+├── venv/
+├── requirements.txt
+└── run_cliente.py
+
+- Para executar
+python3 -m venv venv
+source venv/bin/activate
+pip install Flask SQLAlchemy
+python run_cliente.py
+python run_cozinha.py
+
