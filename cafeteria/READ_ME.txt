@@ -30,7 +30,8 @@ Template Method, onde a estrutura principal da interface é definida e partes va
 
 Onde: Produto, Pedido, ItemPedido em models.py
 Explicação:
-Essas classes são mapeamentos diretos entre as entidades do sistema e o banco de dados (via SQLAlchemy). Elas encapsulam o acesso à base de dados, escondendo detalhes da SQL, o que é a definição do padrão DAO.
+Essas classes são mapeamentos diretos entre as entidades do sistema e o banco de dados (via SQLAlchemy). 
+Elas encapsulam o acesso à base de dados, escondendo detalhes da SQL, o que é a definição do padrão DAO.
 
 python
 class Produto(db.Model):
@@ -44,11 +45,12 @@ class Produto(db.Model):
 
 Onde:
 
- Model → models.py (classes Produto, Pedido, etc.)
- View → templates HTML (index.html, pagamento.html, etc.)
- Controller → routes.py com as rotas Flask
+ Model -> models.py (classes Produto, Pedido, etc.)
+ View -> templates HTML (index.html, pagamento.html, etc.)
+ Controller -> routes.py com as rotas Flask
   Explicação:
-  A separação entre dados (Model), lógica de controle (Controller) e apresentação (View) segue o padrão arquitetural MVC, que ajuda na organização e escalabilidade do projeto.
+  A separação entre dados (Model), lógica de controle (Controller) e apresentação (View) segue o padrão 
+  arquitetural MVC, que ajuda na organização e escalabilidade do projeto.
 
 ---
 
@@ -56,7 +58,9 @@ Onde:
 
 Onde: db = SQLAlchemy() em __init__.py
 Explicação:
-A instância db é criada uma única vez e inicializada com app em create_app(). Isso garante que só uma conexão com o banco seja usada por instância da aplicação. É uma forma controlada de aplicar o padrão Singleton para gerenciar acesso global ao banco.
+A instância db é criada uma única vez e inicializada com app em create_app(). Isso garante que só uma conexão 
+com o banco seja usada por instância da aplicação. É uma forma controlada de aplicar o padrão Singleton para 
+gerenciar acesso global ao banco.
 
 ---
 
@@ -64,7 +68,8 @@ A instância db é criada uma única vez e inicializada com app em create_app().
 
 Onde: Uso de Blueprint em routes.py
 Explicação:
-O Blueprint encapsula comandos (rotas) em objetos reutilizáveis e independentes, como no Command Pattern, onde comandos são encapsulados como objetos para serem registrados e executados.
+O Blueprint encapsula comandos (rotas) em objetos reutilizáveis e independentes, como no Command Pattern, onde 
+comandos são encapsulados como objetos para serem registrados e executados.
 
 python
 cliente = Blueprint('cliente', __name__, template_folder='templates')
@@ -82,7 +87,8 @@ def index():
 
 Onde: routes.py (funções index, pagamento, confirmacao)
 Explicação:
-As funções do Flask atuam como Controllers, recebendo eventos da interface e orquestrando ações de acordo com a regra de negócio. São responsáveis por coordenar o fluxo entre as camadas (View ↔ Model).
+As funções do Flask atuam como Controllers, recebendo eventos da interface e orquestrando ações de acordo com 
+a regra de negócio. São responsáveis por coordenar o fluxo entre as camadas (View ↔ Model).
 
 ---
 
@@ -105,7 +111,8 @@ item_pedido = ItemPedido(...)
 
 Onde: models.py + Lógica de negócio em routes.py
 Explicação:
-A responsabilidade por lidar com dados de produtos, pedidos e cálculos de totais está nas classes que possuem essa informação — como Produto, Pedido, ItemPedido, ou nas funções que operam diretamente com elas (como pagamento()).
+A responsabilidade por lidar com dados de produtos, pedidos e cálculos de totais está nas classes que 
+possuem essa informação — como Produto, Pedido, ItemPedido, ou nas funções que operam diretamente com elas (como pagamento()).
 
 ---
 
@@ -113,7 +120,8 @@ A responsabilidade por lidar com dados de produtos, pedidos e cálculos de totai
 
 Onde: Separação de arquivos (models.py, routes.py, templates/, __init__.py)
 Explicação:
-Cada parte do sistema conhece apenas o necessário para funcionar, o que reduz o acoplamento. Por exemplo, routes.py importa os modelos, mas não acessa o banco diretamente.
+Cada parte do sistema conhece apenas o necessário para funcionar, o que reduz o acoplamento. Por exemplo, 
+routes.py importa os modelos, mas não acessa o banco diretamente.
 
 ---
 
@@ -122,14 +130,14 @@ Cada parte do sistema conhece apenas o necessário para funcionar, o que reduz o
 Onde: Cada arquivo tem responsabilidades bem definidas.
 Explicação:
 
- models.py → apenas modelos de dados
- routes.py → lógica de controle
- templates/ → apresentação
- __init__.py → configuração e inicialização
+ models.py -> apenas modelos de dados
+ routes.py -> lógica de controle
+ templates/ -> apresentação
+ __init__.py -> configuração e inicialização
 
 ---
 
-3. Orientação a Objetos (OO) no Projeto
+3. Orientação a Objetos no Projeto
 
 Características da OO presentes:
 
@@ -139,7 +147,8 @@ Características da OO presentes:
 
 - Encapsulamento
 
- A lógica e os atributos de banco de dados estão dentro das classes, evitando que o resto do sistema precise conhecer detalhes da implementação.
+ A lógica e os atributos de banco de dados estão dentro das classes, evitando que o resto do sistema precise 
+ conhecer detalhes da implementação.
 
 - Associação entre Objetos
 
